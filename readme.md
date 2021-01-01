@@ -1,4 +1,4 @@
-# is-progressive-cli [![Build Status](https://travis-ci.org/sindresorhus/is-progressive-cli.svg?branch=master)](https://travis-ci.org/sindresorhus/is-progressive-cli)
+# is-progressive-cli
 
 > Check if JPEG images are [progressive](http://www.faqs.org/faqs/jpeg-faq/part1/section-11.html)
 
