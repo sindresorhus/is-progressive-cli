@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict';
-const path = require('path');
-const meow = require('meow');
-const logSymbols = require('log-symbols');
-const arrify = require('arrify');
-const isProgressive = require('is-progressive');
+import path from 'node:path';
+import process from 'node:process';
+import meow from 'meow';
+import logSymbols from 'log-symbols';
+import isProgressive from 'is-progressive';
 
 const cli = meow(`
 	Usage
@@ -15,26 +14,27 @@ const cli = meow(`
 	  $ is-progressive baseline.jpg progressive.jpg
 	  ✖ baseline.jpg
 	  ✔ progressive.jpg
-`);
+`, {
+	importMeta: import.meta,
+});
 
-const log = (p, x) => {
-	console.log(p ? logSymbols.success : logSymbols.error, path.relative('.', x));
+const log = (isImageProgressive, imagePath) => {
+	console.log(isImageProgressive ? logSymbols.success : logSymbols.error, path.relative('.', imagePath));
 };
 
 const init = input => {
 	let exitCode = 0;
 
-	arrify(input).forEach(x => {
-		const p = isProgressive.fileSync(x);
-
-		if (!p) {
+	for (const element of [input].flat()) {
+		const isImageProgressive = isProgressive.fileSync(element);
+		if (!isImageProgressive) {
 			exitCode = 1;
 		}
 
-		log(p, x);
-	});
+		log(isImageProgressive, element);
+	}
 
-	process.exit(exitCode);
+	process.exitCode = exitCode;
 };
 
 if (cli.input.length === 0 && process.stdin.isTTY) {
@@ -45,7 +45,8 @@ if (cli.input.length === 0 && process.stdin.isTTY) {
 if (cli.input.length > 0) {
 	init(cli.input);
 } else {
-	isProgressive.stream(process.stdin).then(p => {
-		log(p, 'stdin');
-	});
+	(async () => {
+		const stdin = await isProgressive.stream(process.stdin);
+		log(stdin, 'stdin');
+	})();
 }

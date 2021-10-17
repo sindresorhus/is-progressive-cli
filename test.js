@@ -1,17 +1,15 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
 import test from 'ava';
 import execa from 'execa';
 
 test('main', async t => {
-	const {stdout} = await execa('./cli.js', ['fixture/progressive.jpg'], {cwd: __dirname});
+	const {stdout} = await execa('./cli.js', ['fixture/progressive.jpg']);
 	t.regex(stdout, /✔/);
 });
 
 test('stdin', async t => {
 	const {stdout} = await execa('./cli.js', {
-		input: fs.readFileSync(path.join(__dirname, 'fixture/progressive.jpg')),
-		cwd: __dirname
+		input: fs.readFileSync('fixture/progressive.jpg'),
 	});
 
 	t.regex(stdout, /✔/);

@@ -10,13 +10,11 @@ Can be useful to make sure your images are progressive, which is important for p
 
 The check is fast as it only reads a small part of the file.
 
-
 ## Install
 
+```sh
+npm install --global is-progressive-cli
 ```
-$ npm install --global is-progressive-cli
-```
-
 
 ## Usage
 
@@ -41,12 +39,6 @@ You can use globs too if your shell supports that.
 $ is-progressive *.jpg
 ```
 
-
 ## Related
 
 - [is-progressive](https://github.com/sindresorhus/is-progressive) - API for this module
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
