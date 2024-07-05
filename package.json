@@ -15,7 +15,7 @@
 		"is-progressive": "./cli.js"
 	},
 	"engines": {
-		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+		"node": ">=18.0.0"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -44,13 +44,13 @@
 		"fs"
 	],
 	"dependencies": {
-		"is-progressive": "^4.0.0",
-		"log-symbols": "^5.0.0",
-		"meow": "^10.1.1"
+		"is-progressive": "^5.0.0",
+		"log-symbols": "^6.0.0",
+		"meow": "^13.2.0"
 	},
 	"devDependencies": {
-		"ava": "^3.15.0",
-		"execa": "^5.1.1",
-		"xo": "^0.45.0"
+		"ava": "^6.1.3",
+		"execa": "^9.3.0",
+		"xo": "^0.58.0"
 	}
 }

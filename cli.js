@@ -45,8 +45,6 @@ if (cli.input.length === 0 && process.stdin.isTTY) {
 if (cli.input.length > 0) {
 	init(cli.input);
 } else {
-	(async () => {
-		const stdin = await isProgressive.stream(process.stdin);
-		log(stdin, 'stdin');
-	})();
+	const stdin = await isProgressive.stream(process.stdin);
+	log(stdin, 'stdin');
 }
