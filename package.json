@@ -44,7 +44,7 @@
 		"fs"
 	],
 	"dependencies": {
-		"is-progressive": "^5.0.0",
+		"is-progressive": "^5.0.1",
 		"log-symbols": "^6.0.0",
 		"meow": "^13.2.0"
 	},
