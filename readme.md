@@ -35,10 +35,10 @@ $ is-progressive --help
 
 You can use globs too if your shell supports that.
 
-```
-$ is-progressive *.jpg
+```sh
+is-progressive *.jpg
 ```
 
 ## Related
 
-- [is-progressive](https://github.com/sindresorhus/is-progressive) - API for this module
+- [is-progressive](https://github.com/sindresorhus/is-progressive) - API for this package
